@@ -1,3 +1,5 @@
+local M = {}
+
 local c = {
   none = "NONE",
   syntax = {},
@@ -30,7 +32,7 @@ c.ui.cyan = "#00B298"
 c.ui.blue = "#50A4E9"
 c.ui.purple = "#CC83E3"
 
-c.ui.accent = "#50A4E9"
+c.ui.accent = "#EB8332"
 
 c.ui.tabline = "#111317"
 c.ui.winbar = "#797D87"
@@ -42,7 +44,7 @@ c.ui.split = "#111317"
 c.ui.popup = "#16181D"
 c.ui.float = "#16181D"
 c.ui.title = c.ui.accent
-c.ui.border = "#3A3E47"
+c.ui.border = "#7A7C7E"
 c.ui.current_line = "#1E222A"
 c.ui.scrollbar = c.ui.accent
 c.ui.selection = "#26343F"
@@ -55,10 +57,10 @@ c.ui.text_inactive = "#494D56"
 c.ui.text_match = c.ui.accent
 
 --------------------------------
---- terminal
+--- Terminal
 --------------------------------
 c.term.black = c.ui.tabline
-c.term.bright_black = c.ui.tabline
+c.term.bright_black = c.ui.base
 
 c.term.red = c.syntax.red
 c.term.bright_red = c.syntax.red
@@ -78,46 +80,76 @@ c.term.bright_purple = c.syntax.purple
 c.term.cyan = c.syntax.cyan
 c.term.bright_cyan = c.syntax.cyan
 
-c.term.white = c.ui.text
-c.term.bright_white = c.ui.text_active
+c.term.white = c.syntax.text
+c.term.bright_white = c.syntax.text
 
 c.term.background = c.ui.base
 c.term.foreground = c.ui.text
 
 --------------------------------
---- Icons
+--- Wezterm
 --------------------------------
-c.icon = {
-  c = "#519aba",
-  css = "#61afef",
-  deb = "#a1b7ee",
-  docker = "#384d54",
-  html = "#de8c92",
-  jpeg = "#c882e7",
-  jpg = "#c882e7",
-  js = "#ebcb8b",
-  jsx = "#519ab8",
-  kt = "#7bc99c",
-  lock = "#c4c720",
-  lua = "#51a0cf",
-  mp3 = "#d39ede",
-  mp4 = "#9ea3de",
-  out = "#abb2bf",
-  png = "#c882e7",
-  py = "#a3b8ef",
-  rb = "#ff75a0",
-  robots = "#abb2bf",
-  rpm = "#fca2aa",
-  rs = "#dea584",
-  toml = "#39bf39",
-  ts = "#519aba",
-  ttf = "#abb2bf",
-  vue = "#7bc99c",
-  woff = "#abb2bf",
-  woff2 = "#abb2bf",
-  zip = "#f9d71c",
-  md = "#519aba",
-  pkg = "#d39ede",
+
+local active_tab = {
+  bg_color = c.ui.base,
+  fg_color = c.ui.text_active,
 }
 
-return c
+local inactive_tab = {
+  bg_color = c.ui.tabline,
+  fg_color = c.ui.text_inactive,
+}
+
+function M.colors()
+  return {
+    foreground = c.ui.text,
+    background = c.term.background,
+    cursor_bg = c.ui.text,
+    cursor_border = c.ui.text,
+    cursor_fg = c.ui.black,
+    selection_bg = c.ui.selection,
+    selection_fg = c.ui.text_active,
+    scrollbar_thumb = c.ui.winbar,
+
+    ansi = {
+      c.term.black,
+      c.term.red,
+      c.term.green,
+      c.term.yellow,
+      c.term.blue,
+      c.term.purple,
+      c.term.cyan,
+      c.term.white,
+    },
+
+    brights = {
+      c.term.bright_black,
+      c.term.bright_red,
+      c.term.bright_green,
+      c.term.bright_yellow,
+      c.term.bright_blue,
+      c.term.bright_purple,
+      c.term.bright_cyan,
+      c.term.bright_white,
+    },
+
+    tab_bar = {
+      background = c.ui.tabline,
+      active_tab = active_tab,
+      inactive_tab = inactive_tab,
+      inactive_tab_hover = active_tab,
+      new_tab = inactive_tab,
+      new_tab_hover = active_tab,
+      inactive_tab_edge = c.ui.none_text,
+    },
+  }
+end
+
+function M.window_frame() -- (Fancy tab bar only)
+  return {
+    active_titlebar_bg = active_tab.bg_color,
+    inactive_titlebar_bg = inactive_tab.bg_color,
+  }
+end
+
+return M

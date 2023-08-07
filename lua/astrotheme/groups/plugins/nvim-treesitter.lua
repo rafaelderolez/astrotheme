@@ -1,4 +1,4 @@
-local function callback()
+local function callback(opts)
   return {
 
     -- misc
@@ -30,7 +30,7 @@ local function callback()
 
     -- function
     ["@function"] = { link = "Function" },
-    ["@function.builtin"] = { fg = C.syntax.cyan },
+    ["@function.builtin"] = { fg = opts.simple_syntax_colors and C.syntax.blue or C.syntax.cyan },
     ["@function.call"] = { link = "@function" },
     ["@function.macro"] = { fg = C.syntax.yellow },
 
@@ -38,7 +38,10 @@ local function callback()
     ["@method.call"] = { link = "@method" },
 
     ["@constructor"] = { link = "@function" },
-    ["@parameter"] = { fg = C.syntax.orange },
+    ["@parameter"] = {
+      fg = opts.simple_syntax_colors and C.syntax.text or C.syntax.orange,
+      -- italic = opts.simple_syntax_colors,
+    },
 
     -- keyword
     ["@keyword"] = { link = "Keyword" },
@@ -65,18 +68,24 @@ local function callback()
 
     ["@storageclass"] = { link = "StorageClass" },
     ["@attribute"] = { fg = C.syntax.yellow },
-    ["@field"] = { link = "@property" },
-    ["@property"] = { fg = C.syntax.red },
+    ["@field"] = {
+      fg = opts.simple_syntax_colors and C.syntax.text or C.syntax.red,
+    },
+    ["@property"] = { fg = opts.simple_syntax_colors and C.syntax.text or C.syntax.red },
 
     -- identifiers
     ["@variable"] = { link = "Identifier" },
-    ["@variable.builtin"] = { fg = C.syntax.cyan },
+    ["@variable.builtin"] = {
+      fg = opts.simple_syntax_colors and C.syntax.text or C.syntax.cyan,
+      bold = opts.simple_syntax_colors,
+    },
 
     ["@constant"] = { link = "Constant" },
     ["@constant.builtin"] = { link = "@constant" },
     ["@constant.macro"] = { link = "@constant" },
 
     ["@namespace"] = { link = "Keyword" },
+    ["@namespace.builtin"] = { fg = C.syntax.yellow },
     ["@symbol"] = { link = "Special" },
 
     -- text
@@ -86,11 +95,11 @@ local function callback()
     ["@text.underline"] = { link = "Underline" },
     ["@text.strike"] = { fg = C.syntax.green, strikethrough = true },
     ["@text.title"] = { fg = C.syntax.text, bold = true },
-    ["@text.title.1.markdown"] = { fg = C.syntax.text, bold = true },
-    ["@text.title.2.markdown"] = { fg = C.syntax.purple, bold = true },
-    ["@text.title.3.markdown"] = { fg = C.syntax.blue, bold = true },
-    ["@text.title.4.markdown"] = { fg = C.syntax.cyan, bold = true },
-    ["@text.title.5.markdown"] = { fg = C.syntax.green, bold = true },
+    ["@text.title.1.markdown"] = { fg = C.syntax.purple, bold = true },
+    ["@text.title.2.markdown"] = { fg = C.syntax.blue, bold = true },
+    ["@text.title.3.markdown"] = { fg = C.syntax.cyan, bold = true },
+    ["@text.title.4.markdown"] = { fg = C.syntax.green, bold = true },
+    ["@text.title.5.markdown"] = { fg = C.syntax.yellow, bold = true },
     ["@text.literal"] = { fg = C.syntax.text },
     ["@text.quote"] = { fg = C.syntax.text, italic = true },
     ["@text.uri"] = { fg = C.syntax.green, italic = true, underline = true },
@@ -173,7 +182,8 @@ local function callback()
     -- rust
     ["@constant.rust"] = { fg = C.syntax.cyan },
     ["@function.macro.rust"] = { fg = C.syntax.red },
-    ["@namespace.rust"] = { fg = C.syntax.cyan },
+    ["@namespace.rust"] = { fg = C.syntax.purple },
+    ["@punctuation.special.rust"] = { fg = C.syntax.purple },
     ["@type.rust"] = { fg = C.syntax.cyan },
 
     -- toml

@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://camo.githubusercontent.com/92892e2441ba11c6584a145459c4fd61d26dc9080e802105c65819b7db05e22c/68747470733a2f2f617374726f6e76696d2e6769746875622e696f2f696d672f6c6f676f2f617374726f6e76696d2e737667" width=100/>
+<img src="https://astronvim.com/img/logo/astronvim.svg" width=100/>
 </p>
 
 <h1 align="center"> AstroTheme </h1>
@@ -18,7 +18,7 @@
 ## 🎨 Palettes
 
 <p align="center">
-<img src="https://github.com/AstroNvim/astronvim.github.io/raw/main/static/img/themes/overview.png"/>
+<img src="https://astronvim.com/img/themes/overview.png"/>
 </p>
 
 <details>
@@ -29,7 +29,7 @@ colorscheme astrodark " Dark theme (default)
 ```
 
 <p align="center">
-<img src="https://github.com/AstroNvim/astronvim.github.io/raw/main/static/img/themes/astrodark.png"/>
+<img src="https://astronvim.com/img/themes/astrodark.png"/>
 </p>
 
 </details>
@@ -42,7 +42,7 @@ colorscheme astrolight " Light theme
 ```
 
 <p align="center">
-<img src="https://github.com/AstroNvim/astronvim.github.io/raw/main/static/img/themes/astrolight.png"/>
+<img src="https://astronvim.com/img/themes/astrolight.png"/>
 </p>
 
 </details>
@@ -55,7 +55,7 @@ colorscheme astromars " Red theme
 ```
 
 <p align="center">
-<img src="https://github.com/AstroNvim/astronvim.github.io/raw/main/static/img/themes/astromars.png"/>
+<img src="https://astronvim.com/img/themes/astromars.png"/>
 </p>
 
 </details>
@@ -71,12 +71,15 @@ require("astrotheme").setup({
   },
 
   style = {
-    inactive = true,        -- Bool value, toggles inactive window color.
-    transparent = false,    -- Bool value, toggles transperency.
-    floating = true,        -- Bool value, toggles floating windows background colors.
-    popup = true,           -- Bool value, toggles popup background color.
-    neotree = true,         -- Bool value, toggles neo-trees background color.
-    italic_comments = true, -- Bool value, toggles italic comments.
+    transparent = false,         -- Bool value, toggles transperency.
+    inactive = true,             -- Bool value, toggles inactive window color.
+    float = true,                -- Bool value, toggles floating windows background colors.
+    popup = true,                -- Bool value, toggles popup background color.
+    neotree = true,              -- Bool value, toggles neo-trees background color.
+    border = true,               -- Bool value, toggles borders.
+    title_invert = true,         -- Bool value, swaps text and background colors.
+    italic_comments = true,      -- Bool value, toggles italic comments.
+    simple_syntax_colors = true, -- Bool value, simplifies the amounts of colors used for syntax highlighting.
   },
 
 

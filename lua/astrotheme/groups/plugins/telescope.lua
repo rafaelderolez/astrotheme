@@ -3,27 +3,37 @@ local function callback()
     ----------------
     --- Title
     ----------------
-    TelescopeResultsTitle = { fg = C.ui.title },
-    TelescopePromptTitle = { fg = C.ui.title },
-    TelescopePreviewTitle = { fg = C.ui.title },
+    TelescopeTitle = { link = "PopupTitle" },
+    TelescopeResultsTitle = { link = "TelescopeTitle" },
+    TelescopePromptTitle = { link = "TelescopeTitle" },
+    TelescopePreviewTitle = { link = "TelescopeTitle" },
+
+    ----------------
+    --- Normal
+    ----------------
+    TelescopeNormal = { link = "NormalPopup" },
+    TelescopePreviewNormal = { link = "TelescopeNormal" },
+    TelescopePromptNormal = { link = "TelescopeNormal" },
+    TelescopeResultsNormal = { link = "TelescopeNormal" },
 
     ----------------
     --- Border
     ----------------
-    TelescopeResultsBorder = { fg = C.ui.border, bg = C.ui.base },
-    TelescopePromptBorder = { fg = C.ui.border, bg = C.ui.base },
-    TelescopePreviewBorder = { fg = C.ui.border, bg = C.ui.base },
+    TelescopeBorder = { link = "PopupBorder" },
+    TelescopeResultsBorder = { link = "TelescopeBorder" },
+    TelescopePromptBorder = { link = "TelescopeBorder" },
+    TelescopePreviewBorder = { link = "TelescopeBorder" },
 
-    TelescopeSelectionCaret = { fg = C.ui.red },
+    ----------------
+    --- Other
+    ----------------
+    TelescopePromptPrefix = { fg = C.ui.accent },
+    TelescopeSelectionCaret = { fg = C.ui.accent },
     TelescopeMatching = { fg = C.ui.text_match },
     TelescopeSelection = { bg = C.ui.current_line },
+    -- TelescopeSelection = { fg = C.ui.base, bg = C.ui.accent, bold = true },
     TelescopeMultiSelection = { fg = C.syntax.blue },
     TelescopeMultiIcon = { fg = C.ui.blue },
-
-    TelescopeNormal = { link = "NormalFloat" },
-    TelescopePreviewNormal = { link = "NormalFloat" },
-    TelescopePromptNormal = { link = "NormalFloat" },
-    TelescopeResultsNormal = { link = "NormalFloat" },
   }
 end
 
